@@ -8,7 +8,7 @@ import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
 const PrimaryNav = createStackNavigator({
-  CameraScreen: { screen: CameraScreen },
+  CameraScreen: { screen: CameraScreen },git init
   LaunchScreen: { screen: LaunchScreen }
 }, {
   // Default config for all screens
