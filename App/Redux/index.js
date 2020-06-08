@@ -8,6 +8,7 @@ export const reducers = combineReducers({
   github: require('./GithubRedux').reducer,
   search: require('./SearchRedux').reducer,
   up_image: require('./UpImageRedux').reducer,
+  get_all_sv: require('./GetAllSVRedux').reducer,
 })
 
 export default () => {

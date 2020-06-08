@@ -10,6 +10,7 @@ import { connect } from 'react-redux'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 import Actions from '../Redux/UpImageRedux'
+import GetAllSVActions from '../Redux/GetAllSVRedux'
 // Styles
 import styles from './Styles/CameraScreenStyle'
 import { RNCamera } from 'react-native-camera';
@@ -17,9 +18,14 @@ import Modal from 'react-native-modal'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 import ActionButton from 'react-native-action-button';
-import { Images } from '../Themes'
+import { Images, Colors } from '../Themes'
 
 class CameraScreen extends Component {
+  static navigationOptions = ({ navigation, navigationOptions }) => {
+    return {
+      header: null
+    }
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -103,7 +109,7 @@ class CameraScreen extends Component {
         animationOut="zoomOut"
       >
         <View style={styles.left_contend_modal}>
-          <ActivityIndicator color="blue" size="large" />
+          <ActivityIndicator color={Colors.main} size="large" />
         </View>
         <View style={styles.right_contend_modal}>
           <Text style={[styles.txt_modal_loading, { fontSize: 16 }]}>... Đang xử lý</Text>
@@ -134,7 +140,10 @@ class CameraScreen extends Component {
           <ActionButton.Item
             buttonColor='#9b59b6'
             title="Quản lý"
-            onPress={() => this.props.navigation.navigate("ManageScreen")}
+            onPress={() => {
+              this.props.get_all_sv();
+              this.props.navigation.navigate("ManageScreen")
+            }}
             size={50}
           >
             <Ionicons name="md-list" style={styles.actionButtonIcon} />
@@ -183,6 +192,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   up_image: (image) =>
     dispatch(Actions.upimageRequest(image)),
+
+  get_all_sv: () =>
+    dispatch(GetAllSVActions.getallsvRequest()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CameraScreen)

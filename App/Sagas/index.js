@@ -8,11 +8,13 @@ import DebugConfig from '../Config/DebugConfig'
 import { StartupTypes } from '../Redux/StartupRedux'
 import { GithubTypes } from '../Redux/GithubRedux'
 import { UpImageTypes } from '../Redux/UpImageRedux'
+import { GetAllSVTypes } from '../Redux/GetAllSVRedux'
 
 /* ------------- Sagas ------------- */
 
 import { startup } from './StartupSagas'
 import { up_image } from './UpImageSagas'
+import { get_all_sv } from './GetAllSVSagas'
 
 /* ------------- API ------------- */
 
@@ -31,6 +33,7 @@ export default function * root () {
     // takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api),
 
     takeLatest(UpImageTypes.UPIMAGE_REQUEST, up_image),
+    takeLatest(GetAllSVTypes.GETALLSV_REQUEST, get_all_sv),
     
   ])
 }
