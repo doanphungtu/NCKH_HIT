@@ -30,7 +30,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 15,
     height: "100%",
-    width: 0.8 * Metrics.screenWidth - 100
+    width: 0.8 * Metrics.screenWidth - 140
   },
   txt_modal_loading: {
     color: 'black',
@@ -54,26 +54,44 @@ export default StyleSheet.create({
   },
   capture: {
     position: 'absolute',
-    bottom: 50,
-    left: Metrics.screenWidth / 2 - 50,
-    width: 100,
-    height: 50,
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    padding: 15,
+    bottom: 40,
+    left: Metrics.screenWidth / 2 - 35,
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    backgroundColor: '#E65242',
     justifyContent: "center",
     alignItems: 'center'
   },
   flip: {
     position: 'absolute',
     bottom: 50,
-    right: 50,
+    right: 30,
     width: 50,
     height: 50,
-    backgroundColor: '#fff',
+    backgroundColor: '#E65242',
     borderRadius: 25,
-    padding: 15,
     justifyContent: "center",
     alignItems: 'center'
+  },
+  img_modal: {
+    width: 60,
+    height: 60,
+    position: 'absolute',
+    top: -30,
+    left: Metrics.screenWidth / 2 - 60
+  },
+  view_modal_success: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 15,
+    height: 70,
+    position: 'absolute',
+    bottom: 0
+  },
+  actionButtonIcon: {
+    fontSize: 20,
+    height: 22,
+    color: 'white',
   },
 })
