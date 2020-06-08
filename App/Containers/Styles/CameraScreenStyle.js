@@ -86,12 +86,17 @@ export default StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 15,
     height: 70,
+    width: '100%',
     position: 'absolute',
-    bottom: 0
+    bottom: 0,
   },
   actionButtonIcon: {
     fontSize: 20,
     height: 22,
     color: 'white',
   },
+  wrapper: { flexDirection: 'row',alignItems:'center'},
+  title: { flex: 1, backgroundColor: '#f6f8fa' },
+  row: {  height: 25 },
+  text: { textAlign: 'center' }
 })

@@ -8,6 +8,7 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Table, TableWrapper, Row } from 'react-native-table-component';
 
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
@@ -41,37 +42,46 @@ class ManageScreen extends Component {
     };
   };
 
-  render_item(item, index) {
-    return (
-      <View style={styles.view_item}>
-        <View style={styles.view_masv}>
-          <Text>{item.masv}</Text>
-        </View>
-        <View style={styles.view_ht}>
-          <Text>aaa</Text>
-        </View>
-        <View style={styles.view_tt}>
-          <Text>aaa</Text>
-        </View>
-      </View>
-    )
+  constructor(props) {
+    super(props);
+    this.state = {
+      tableHead: ['STT', 'Mã sv', 'Họ tên', 'Lớp', 'Khóa', 'Vị trí', 'Tình trạng'],
+      widthArr: [50, 140, 220, 120, 120, 80, 200]
+    }
   }
 
   render() {
-    console.tron.log("aaa", this.props.data_get_all_sv)
+    const state = this.state;
     return (
       this.props.data_get_all_sv.data_get_all_sv ?
-      <FlatList
-        extraData={this.props}
-        data={[1,2,3]}
-        // data={this.props.data_get_all_sv.data_get_all_sv.data}
-        renderItem={({ item, index }) => this.render_item(item, index)}
-        keyExtractor={(item, index) => index.toString()}
-      />
-      :
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size="large" color={Colors.main} />
-      </View>
+        <View style={styles.container}>
+          <ScrollView horizontal={true}>
+            <View>
+              <Table borderStyle={{ borderWidth: 1, borderColor: '#C1C0B9' }}>
+                <Row data={state.tableHead} widthArr={state.widthArr} style={styles.header} textStyle={styles.text} />
+              </Table>
+              <ScrollView style={styles.dataWrapper}>
+                <Table borderStyle={{ borderWidth: 1, borderColor: '#C1C0B9' }}>
+                  {
+                    this.props.data_get_all_sv.data_get_all_sv.data.map((item, index) => (
+                      <Row
+                        key={index}
+                        data={[index + 1, item.masv, item.name, item.lop, item.khoa, item.vt, item.check == "0" ? "Chưa điểm danh" : "Điểm danh"]}
+                        widthArr={state.widthArr}
+                        style={[styles.row, index % 2 && { backgroundColor: '#F7F6E7' }]}
+                        textStyle={styles.text}
+                      />
+                    ))
+                  }
+                </Table>
+              </ScrollView>
+            </View>
+          </ScrollView>
+        </View>
+        :
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <ActivityIndicator size="large" color={Colors.main} />
+        </View>
     )
   }
 }

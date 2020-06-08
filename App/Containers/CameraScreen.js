@@ -7,6 +7,8 @@ import {
   Image
 } from 'react-native'
 import { connect } from 'react-redux'
+import { Table, TableWrapper, Row, Rows, Col, Cols } from 'react-native-table-component';
+
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 import Actions from '../Redux/UpImageRedux'
@@ -18,7 +20,7 @@ import Modal from 'react-native-modal'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 import ActionButton from 'react-native-action-button';
-import { Images, Colors } from '../Themes'
+import { Images, Colors, Metrics } from '../Themes'
 
 class CameraScreen extends Component {
   static navigationOptions = ({ navigation, navigationOptions }) => {
@@ -33,7 +35,9 @@ class CameraScreen extends Component {
       type: 'front',
       show_modal_success: false,
       show_modal_fail: false,
-      name: ''
+      name: '',
+      vt: '',
+      tableTitle: ['Họ tên', 'Vị trí'],
     }
   }
 
@@ -43,7 +47,7 @@ class CameraScreen extends Component {
       if (fetching === false && data_up_image) {
         console.tron.log("aaa", data_up_image.data);
         if (data_up_image.data.name) {
-          this.setState({ show_modal_success: true, name: data_up_image.data.name });
+          this.setState({ show_modal_success: true, name: data_up_image.data.name, vt: data_up_image.data.vt });
         } else {
           this.setState({ show_modal_fail: true, name: data_up_image.data.msg });
         }
@@ -94,7 +98,12 @@ class CameraScreen extends Component {
       >
         <Image source={Images.tick} style={styles.img_modal} />
         <View style={styles.view_modal_success}>
-          <Text style={[styles.txt_modal_loading, { fontSize: 16 }]}>{this.state.name}</Text>
+          <Table borderStyle={{ borderWidth: 1, flex: 1 }}>
+            <TableWrapper >
+              <Rows data={[["Họ tên", this.state.name]]} widthArr={[0.2 * Metrics.screenWidth, 0.55 * Metrics.screenWidth]} style={styles.row} textStyle={styles.text} />
+              <Rows data={[["Vị trí", this.state.vt]]} widthArr={[0.2 * Metrics.screenWidth, 0.55 * Metrics.screenWidth]} style={styles.row} textStyle={styles.text} />
+            </TableWrapper>
+          </Table>
         </View>
       </Modal >
     );

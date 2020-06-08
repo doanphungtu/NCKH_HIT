@@ -3,25 +3,25 @@ import { ApplicationStyles } from '../../Themes/'
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
-  view_item: {
-    width: "100%",
-    height: 60,
-    flexDirection: 'row',
-    alignItems: 'center'
+  container: {
+    flex: 1,
+    padding: 16,
+    // paddingTop: 16,
+    backgroundColor: '#fff'
   },
-  view_masv: {
-    flex: .3,
-    justifyContent: 'center',
-    alignItems: 'center'
+  header: {
+    height: 50,
+    backgroundColor: '#537791'
   },
-  view_ht: {
-    flex: .5,
-    justifyContent: 'center',
-    alignItems: 'center'
+  text: {
+    textAlign: 'center',
+    fontWeight: '100'
   },
-  view_tt: {
-    flex: .2,
-    justifyContent: 'center',
-    alignItems: 'center'
+  dataWrapper: {
+    marginTop: -1
+  },
+  row: {
+    height: 40,
+    backgroundColor: '#E7E6E1'
   }
 })

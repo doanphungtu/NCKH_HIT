@@ -9,7 +9,7 @@ export function* up_image(action) {
   let a = action.image.split("/");
   formData.append('image', {
     uri: action.image,
-    type: 'image/jpg',
+    type: 'image/jpeg',
     name: a[a.length - 1],
   })
 
