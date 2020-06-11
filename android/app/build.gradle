@@ -140,6 +140,8 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-config')
+    implementation project(':react-native-cardview')
     implementation project(':react-native-camera')
     implementation project(':react-native-reanimated')
     implementation project(':react-native-vector-icons')

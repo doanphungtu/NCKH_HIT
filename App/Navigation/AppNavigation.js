@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { createStackNavigator } from 'react-navigation-stack'
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import ManageScreen from '../Containers/ManageScreen'
-import SettingScreen from '../Containers/SettingScreen'
+import SignInScreen from '../Containers/SignInScreen'
 import CameraScreen from '../Containers/CameraScreen'
 import LaunchScreen from '../Containers/LaunchScreen'
 
@@ -37,7 +37,7 @@ const transitionConfig = () => {
 // Manifest of possible screens
 const PrimaryNav = createStackNavigator({
   ManageScreen: { screen: ManageScreen },
-  SettingScreen: { screen: SettingScreen },
+  SignInScreen: { screen: SignInScreen },
   CameraScreen: { screen: CameraScreen },
   LaunchScreen: { screen: LaunchScreen },
 }, {
@@ -50,4 +50,12 @@ const PrimaryNav = createStackNavigator({
   }
 })
 
-export default createAppContainer(PrimaryNav);
+const SwitchNav = createSwitchNavigator({
+  PrimaryNav: { screen: PrimaryNav },
+  SignInScreen: { screen: SignInScreen },
+}, {
+  initialRouteName: 'SignInScreen',
+  transitionConfig,
+})
+
+export default createAppContainer(SwitchNav);

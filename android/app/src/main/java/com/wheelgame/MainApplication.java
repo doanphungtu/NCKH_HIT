@@ -13,6 +13,7 @@ import com.facebook.soloader.SoLoader;
 import org.reactnative.camera.RNCameraPackage;
 import java.util.Arrays;
 import java.util.List;
+import com.kishanjvaghela.cardview.RNCardViewPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -29,6 +30,7 @@ public class MainApplication extends Application implements ReactApplication {
             new RNCameraPackage(),
             new ReanimatedPackage(),
             new VectorIconsPackage(),
+            new RNCardViewPackage(),
             new RNGestureHandlerPackage()
       );
     }

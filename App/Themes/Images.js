@@ -22,6 +22,7 @@ const images = {
   closeButton: require('../Images/Icons/close-button.png'),
   tick: require('../Images/App/tick.png'),
   fail: require('../Images/App/fail.png'),
+  face: require('../Images/App/face.png'),
 }
 
 export default images
